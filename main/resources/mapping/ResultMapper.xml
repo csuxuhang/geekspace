@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csu.geekspace.detectsoftware.mapper.ResultMapper">
+  <resultMap id="BaseResultMap" type="com.csu.geekspace.detectsoftware.pojo.Result">
+    <id column="data_position_area" jdbcType="VARCHAR" property="data_position_area" />
+    <id column="data_position_line" jdbcType="INTEGER" property="data_position_line" />
+    <id column="data_position_station" jdbcType="INTEGER" property="data_position_station" />
+    <id column="data_f" jdbcType="DECIMAL" property="data_f" />
+    <id column="data_t" jdbcType="TIMESTAMP" property="data_t" />
+    <result column="ζ" jdbcType="DECIMAL" property="ζ" />
+    <result column="ξ" jdbcType="DECIMAL" property="ξ" />
+    <result column="η" jdbcType="DECIMAL" property="η" />
+    <result column="Ε" jdbcType="DECIMAL" property="ε" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    data_position_area, data_position_line, data_position_station, data_f, data_t, ζ, 
+    ξ, η, Ε
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.ResultKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from result
+    where data_position_area = #{data_position_area,jdbcType=VARCHAR}
+      and data_position_line = #{data_position_line,jdbcType=INTEGER}
+      and data_position_station = #{data_position_station,jdbcType=INTEGER}
+      and data_f = #{data_f,jdbcType=DECIMAL}
+      and data_t = #{data_t,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.ResultKey">
+    delete from result
+    where data_position_area = #{data_position_area,jdbcType=VARCHAR}
+      and data_position_line = #{data_position_line,jdbcType=INTEGER}
+      and data_position_station = #{data_position_station,jdbcType=INTEGER}
+      and data_f = #{data_f,jdbcType=DECIMAL}
+      and data_t = #{data_t,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.csu.geekspace.detectsoftware.pojo.Result">
+    insert into result (data_position_area, data_position_line, 
+      data_position_station, data_f, data_t, 
+      ζ, ξ, η, Ε
+      )
+    values (#{data_position_area,jdbcType=VARCHAR}, #{data_position_line,jdbcType=INTEGER},
+      #{data_position_station,jdbcType=INTEGER}, #{data_f,jdbcType=DECIMAL}, #{data_t,jdbcType=TIMESTAMP},
+      #{ζ,jdbcType=DECIMAL}, #{ξ,jdbcType=DECIMAL}, #{η,jdbcType=DECIMAL}, #{ε,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.csu.geekspace.detectsoftware.pojo.Result">
+    insert into result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataPositionArea != null">
+        data_position_area,
+      </if>
+      <if test="dataPositionLine != null">
+        data_position_line,
+      </if>
+      <if test="dataPositionStation != null">
+        data_position_station,
+      </if>
+      <if test="dataF != null">
+        data_f,
+      </if>
+      <if test="dataT != null">
+        data_t,
+      </if>
+      <if test="ζ != null">
+        ζ,
+      </if>
+      <if test="ξ != null">
+        ξ,
+      </if>
+      <if test="η != null">
+        η,
+      </if>
+      <if test="ε != null">
+        Ε,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataPositionArea != null">
+        #{data_position_area,jdbcType=VARCHAR},
+      </if>
+      <if test="dataPositionLine != null">
+        #{data_position_line,jdbcType=INTEGER},
+      </if>
+      <if test="dataPositionStation != null">
+        #{data_position_station,jdbcType=INTEGER},
+      </if>
+      <if test="dataF != null">
+        #{data_f,jdbcType=DECIMAL},
+      </if>
+      <if test="dataT != null">
+        #{data_t,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ζ != null">
+        #{ζ,jdbcType=DECIMAL},
+      </if>
+      <if test="ξ != null">
+        #{ξ,jdbcType=DECIMAL},
+      </if>
+      <if test="η != null">
+        #{η,jdbcType=DECIMAL},
+      </if>
+      <if test="ε != null">
+        #{ε,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csu.geekspace.detectsoftware.pojo.Result">
+    update result
+    <set>
+      <if test="ζ != null">
+        ζ = #{ζ,jdbcType=DECIMAL},
+      </if>
+      <if test="ξ != null">
+        ξ = #{ξ,jdbcType=DECIMAL},
+      </if>
+      <if test="η != null">
+        η = #{η,jdbcType=DECIMAL},
+      </if>
+      <if test="ε != null">
+        Ε = #{ε,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where data_position_area = #{data_position_area,jdbcType=VARCHAR}
+      and data_position_line = #{data_position_line,jdbcType=INTEGER}
+      and data_position_station = #{data_position_station,jdbcType=INTEGER}
+      and data_f = #{data_f,jdbcType=DECIMAL}
+      and data_t = #{data_t,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.Result">
+    update result
+    set ζ = #{ζ,jdbcType=DECIMAL},
+      ξ = #{ξ,jdbcType=DECIMAL},
+      η = #{η,jdbcType=DECIMAL},
+      Ε = #{ε,jdbcType=DECIMAL}
+    where data_position_area = #{data_position_area,jdbcType=VARCHAR}
+      and data_position_line = #{data_position_line,jdbcType=INTEGER}
+      and data_position_station = #{data_position_station,jdbcType=INTEGER}
+      and data_f = #{data_f,jdbcType=DECIMAL}
+      and data_t = #{data_t,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

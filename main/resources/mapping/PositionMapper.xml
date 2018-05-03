@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csu.geekspace.detectsoftware.mapper.PositionMapper">
+  <resultMap id="BaseResultMap" type="com.csu.geekspace.detectsoftware.pojo.Position">
+    <id column="area" jdbcType="VARCHAR" property="area" />
+    <id column="line" jdbcType="INTEGER" property="line" />
+    <id column="station" jdbcType="INTEGER" property="station" />
+    <result column="A_x" jdbcType="DECIMAL" property="A_x" />
+    <result column="A_y" jdbcType="DECIMAL" property="A_y" />
+    <result column="B_x" jdbcType="DECIMAL" property="B_x" />
+    <result column="B_y" jdbcType="DECIMAL" property="B_y" />
+    <result column="M_x" jdbcType="DECIMAL" property="M_x" />
+    <result column="M_y" jdbcType="DECIMAL" property="M_y" />
+    <result column="M_z" jdbcType="DECIMAL" property="M_z" />
+    <result column="N_x" jdbcType="DECIMAL" property="N_x" />
+    <result column="N_y" jdbcType="DECIMAL" property="N_y" />
+    <result column="N_z" jdbcType="DECIMAL" property="N_z" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    area, line, station, A_x, A_y, B_x, B_y, M_x, M_y, M_z, N_x, N_y, N_z
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.PositionKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from position
+    where area = #{area,jdbcType=VARCHAR}
+      and line = #{line,jdbcType=INTEGER}
+      and station = #{station,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.PositionKey">
+    delete from position
+    where area = #{area,jdbcType=VARCHAR}
+      and line = #{line,jdbcType=INTEGER}
+      and station = #{station,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.csu.geekspace.detectsoftware.pojo.Position">
+    insert into position (area, line, station, 
+      A_x, A_y, B_x, B_y, 
+      M_x, M_y, M_z, N_x, 
+      N_y, N_z)
+    values (#{area,jdbcType=VARCHAR}, #{line,jdbcType=INTEGER}, #{station,jdbcType=INTEGER}, 
+      #{A_x,jdbcType=DECIMAL}, #{A_y,jdbcType=DECIMAL}, #{B_x,jdbcType=DECIMAL}, #{B_y,jdbcType=DECIMAL},
+      #{M_x,jdbcType=DECIMAL}, #{M_y,jdbcType=DECIMAL}, #{M_z,jdbcType=DECIMAL}, #{N_x,jdbcType=DECIMAL},
+      #{N_y,jdbcType=DECIMAL}, #{N_z,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csu.geekspace.detectsoftware.pojo.Position">
+    insert into position
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="area != null">
+        area,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="station != null">
+        station,
+      </if>
+      <if test="aX != null">
+        A_x,
+      </if>
+      <if test="aY != null">
+        A_y,
+      </if>
+      <if test="bX != null">
+        B_x,
+      </if>
+      <if test="bY != null">
+        B_y,
+      </if>
+      <if test="mX != null">
+        M_x,
+      </if>
+      <if test="mY != null">
+        M_y,
+      </if>
+      <if test="mZ != null">
+        M_z,
+      </if>
+      <if test="nX != null">
+        N_x,
+      </if>
+      <if test="nY != null">
+        N_y,
+      </if>
+      <if test="nZ != null">
+        N_z,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=INTEGER},
+      </if>
+      <if test="station != null">
+        #{station,jdbcType=INTEGER},
+      </if>
+      <if test="aX != null">
+        #{A_x,jdbcType=DECIMAL},
+      </if>
+      <if test="aY != null">
+        #{A_y,jdbcType=DECIMAL},
+      </if>
+      <if test="bX != null">
+        #{B_x,jdbcType=DECIMAL},
+      </if>
+      <if test="bY != null">
+        #{B_y,jdbcType=DECIMAL},
+      </if>
+      <if test="mX != null">
+        #{M_x,jdbcType=DECIMAL},
+      </if>
+      <if test="mY != null">
+        #{M_y,jdbcType=DECIMAL},
+      </if>
+      <if test="mZ != null">
+        #{M_z,jdbcType=DECIMAL},
+      </if>
+      <if test="nX != null">
+        #{N_x,jdbcType=DECIMAL},
+      </if>
+      <if test="nY != null">
+        #{N_y,jdbcType=DECIMAL},
+      </if>
+      <if test="nZ != null">
+        #{N_z,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csu.geekspace.detectsoftware.pojo.Position">
+    update position
+    <set>
+      <if test="aX != null">
+        A_x = #{A_x,jdbcType=DECIMAL},
+      </if>
+      <if test="aY != null">
+        A_y = #{A_y,jdbcType=DECIMAL},
+      </if>
+      <if test="bX != null">
+        B_x = #{B_x,jdbcType=DECIMAL},
+      </if>
+      <if test="bY != null">
+        B_y = #{B_y,jdbcType=DECIMAL},
+      </if>
+      <if test="mX != null">
+        M_x = #{M_x,jdbcType=DECIMAL},
+      </if>
+      <if test="mY != null">
+        M_y = #{M_y,jdbcType=DECIMAL},
+      </if>
+      <if test="mZ != null">
+        M_z = #{M_z,jdbcType=DECIMAL},
+      </if>
+      <if test="nX != null">
+        N_x = #{N_x,jdbcType=DECIMAL},
+      </if>
+      <if test="nY != null">
+        N_y = #{N_y,jdbcType=DECIMAL},
+      </if>
+      <if test="nZ != null">
+        N_z = #{N_z,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where area = #{area,jdbcType=VARCHAR}
+      and line = #{line,jdbcType=INTEGER}
+      and station = #{station,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csu.geekspace.detectsoftware.pojo.Position">
+    update position
+    set A_x = #{A_x,jdbcType=DECIMAL},
+      A_y = #{A_y,jdbcType=DECIMAL},
+      B_x = #{B_x,jdbcType=DECIMAL},
+      B_y = #{B_y,jdbcType=DECIMAL},
+      M_x = #{M_x,jdbcType=DECIMAL},
+      M_y = #{M_y,jdbcType=DECIMAL},
+      M_z = #{M_z,jdbcType=DECIMAL},
+      N_x = #{N_x,jdbcType=DECIMAL},
+      N_y = #{N_y,jdbcType=DECIMAL},
+      N_z = #{N_z,jdbcType=DECIMAL}
+    where area = #{area,jdbcType=VARCHAR}
+      and line = #{line,jdbcType=INTEGER}
+      and station = #{station,jdbcType=INTEGER}
+  </update>
+</mapper>

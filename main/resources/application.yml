@@ -1,0 +1,19 @@
+server:
+  port: 10000
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/datasave?useSSL=false
+        username: root
+        password: 493641
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.csu.geekspace.detectsoftware.pojo
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
